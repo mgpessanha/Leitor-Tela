@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Leitor de Tela Acessível</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+        }
+
+        textarea {
+            width: 90%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #0066cc;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background-color: #004d99;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Leitor de Tela Acessível</h1>
+    <p>Digite ou cole um texto abaixo e clique em "Ler em voz alta"</p>
+    <textarea id="texto" placeholder="Digite seu texto..."></textarea>
+    <br>
+    <button onclick="lerTexto()">🔊 Ler em voz alta</button>
+
+    <script>
+        function lerTexto() {
+            const texto = document.getElementById("texto").value;
+            if (!texto) {
+                alert("Por favor, digite algum texto!");
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(texto);
+            utterance.lang = 'pt-BR';
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+
+</html>
